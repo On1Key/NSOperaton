@@ -37,7 +37,8 @@
         _files = @[[[NSBundle mainBundle] pathForResource:@"num_excel" ofType:@"xlsx"],
                    [[NSBundle mainBundle] pathForResource:@"num_numbers" ofType:@"numbers"],
                    [[NSBundle mainBundle] pathForResource:@"error" ofType:@"csv"],
-                   [[NSBundle mainBundle] pathForResource:@"list" ofType:@"pdf"]];
+                   [[NSBundle mainBundle] pathForResource:@"list" ofType:@"pdf"],
+                   [[NSBundle mainBundle] pathForResource:@"NSOperatonDemo" ofType:@"mov"]];
     }
     return _files;
 }

@@ -1,0 +1,77 @@
+//
+//  PrefixHeader.pch
+//  NSOperaton
+//
+//  Created by Yang Mr on 2017/6/6.
+//  Copyright © 2017年 Yang Mr. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import <UIKit/UIKit.h>
+#import "CEBaseInteractionController.h"
+#import "CEReversibleAnimationController.h"
+#import "BaseViewController.h"
+#import "NavigationController.h"
+#import "UILabel+LinkUrl.h"
+#import "TTTAttributedLabel.h"
+#import "NSString+scan.h"
+#import "CalculateManager.h"
+#import "Aspects.h"
+#import "AnalysisManager.h"
+#import "VIAnalyticsAOP.h"
+#import "MJExtension.h"
+#import "JsonModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+
+#define interactionControllers @[@"CEHorizontalSwipeInteractionController",\
+                                    @"CEPinchInteractionController",\
+                                    @"CEVerticalSwipeInteractionController"]
+#define animationControllers @[@"CEPanAnimationController",\
+                                  @"CECubeAnimationController",\
+                                  @"CEPortalAnimationController",\
+                                  @"CEFlipAnimationController",\
+                                  @"CETurnAnimationController",\
+                                  @"CECrossfadeAnimationController",\
+                                  @"CEExplodeAnimationController",\
+                                  @"CEFoldAnimationController",\
+                                  @"CECardsAnimationController",\
+                                  @"CENatGeoAnimationController"]
+
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+
+#define IN_APP_STORE 2
+
+//通用请求链接
+#define BASE_URL_TEST        @"http://yhdx-test.5ixc.com"//@"https://yhdx-test.youhaodongxi.com"
+#define BASE_URL_REAL        @"http://yhdx-real.6xcc.com"
+#define BASE_URL_REAL_TEST   @"http://yhdx-realTest.rtxc.com"
+
+//通用分享链接
+#define BASE_URL_SHARE_TEST  @"http://yhdx-test.5ixc.com"
+#define BASE_URL_SHARE_REAL  @"http://yhdx-real.6xcc.com"
+
+#if IN_APP_STORE == 1
+
+#define BASE_SHARE_URL       BASE_URL_SHARE_REAL
+#define BASE_URL             BASE_URL_REAL
+#define DLog(fmt, ...) NSLog((@"%s[%d]" fmt), __FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#elif IN_APP_STORE == 2
+
+#define BASE_SHARE_URL       BASE_URL_SHARE_REAL
+#define BASE_URL             BASE_URL_REAL_TEST
+# define DLog(fmt, ...) NSLog((@"+++()+++" fmt), ##__VA_ARGS__);
+
+#else
+
+#define BASE_SHARE_URL       BASE_URL_SHARE_TEST
+#define BASE_URL             BASE_URL_TEST
+# define DLog(fmt, ...) NSLog((@"--[]--" fmt), ##__VA_ARGS__);
+
+#endif
+
+#endif /* PrefixHeader_pch */

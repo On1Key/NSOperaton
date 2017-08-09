@@ -1,0 +1,18 @@
+platform:ios,'8.0'
+use_frameworks!
+
+target 'NSOperaton' do
+pod 'MJRefresh', '~> 3.1.12'
+pod 'SDWebImage', '~> 3.8.0'
+pod 'SVPullToRefresh', '~> 0.4.1'
+#pod 'FFmpeg', '~> 2.8.3'
+pod 'VCTransitionsLibrary', '~> 1.5.0'
+pod 'TTTAttributedLabel', '~> 2.0.0'
+pod 'Aspects', '~> 1.4.1'
+pod 'VIAnalyticsKit', '~> 0.0.7'
+#pod 'JSONKit', '~> 1.5pre'
+#pod 'SBJson', '~> 5.0.0'
+pod 'MJExtension', '~> 3.0.13'
+pod 'AvoidCrash', '~> 1.6.7'
+
+end

@@ -17,6 +17,7 @@
 		C52AD6601EA8D9F10017AA01 /* CustomBlockOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AD65F1EA8D9F10017AA01 /* CustomBlockOperation.m */; };
 		C52AD6631EA8DE0B0017AA01 /* CustomOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AD6621EA8DE0B0017AA01 /* CustomOperation.m */; };
 		C5673C721F3ABBC30017EA85 /* NSOperatonDemo.mov in Resources */ = {isa = PBXBuildFile; fileRef = C5673C711F3ABBC30017EA85 /* NSOperatonDemo.mov */; };
+		C5673C741F3AC10B0017EA85 /* NSOperatonDemo.gif in Resources */ = {isa = PBXBuildFile; fileRef = C5673C731F3AC10B0017EA85 /* NSOperatonDemo.gif */; };
 		C57594EE1F01F7090039B7D9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57594ED1F01F7090039B7D9 /* AVFoundation.framework */; };
 		C57594F01F01F7130039B7D9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57594EF1F01F7130039B7D9 /* CoreMedia.framework */; };
 		C575952B1F0374050039B7D9 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C57595261F0374050039B7D9 /* 1.jpg */; };
@@ -70,6 +71,7 @@
 		C52AD6611EA8DE0B0017AA01 /* CustomOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomOperation.h; sourceTree = "<group>"; };
 		C52AD6621EA8DE0B0017AA01 /* CustomOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomOperation.m; sourceTree = "<group>"; };
 		C5673C711F3ABBC30017EA85 /* NSOperatonDemo.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = NSOperatonDemo.mov; sourceTree = "<group>"; };
+		C5673C731F3AC10B0017EA85 /* NSOperatonDemo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = NSOperatonDemo.gif; sourceTree = "<group>"; };
 		C57594ED1F01F7090039B7D9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C57594EF1F01F7130039B7D9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		C57595261F0374050039B7D9 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				C5EC8E381F39AAE6003BA9CA /* FileTableViewController.m */,
 				C5EC8E421F3AAC1D003BA9CA /* PDFViewController.h */,
 				C5EC8E431F3AAC1D003BA9CA /* PDFViewController.m */,
+				C5673C731F3AC10B0017EA85 /* NSOperatonDemo.gif */,
 				C5673C711F3ABBC30017EA85 /* NSOperatonDemo.mov */,
 				C5EC8E451F3AAD3E003BA9CA /* PDFView.h */,
 				C5EC8E461F3AAD3E003BA9CA /* PDFView.m */,
@@ -380,6 +383,7 @@
 				C52AD6541EA8C84A0017AA01 /* Assets.xcassets in Resources */,
 				C5EC8E341F39A52F003BA9CA /* num_numbers.numbers in Resources */,
 				C575952E1F0374050039B7D9 /* 4.png in Resources */,
+				C5673C741F3AC10B0017EA85 /* NSOperatonDemo.gif in Resources */,
 				C575952D1F0374050039B7D9 /* 3.jpg in Resources */,
 				C5F9C08B1F1323EA003FF376 /* InfoPlist.strings in Resources */,
 				C52AD6521EA8C84A0017AA01 /* Main.storyboard in Resources */,

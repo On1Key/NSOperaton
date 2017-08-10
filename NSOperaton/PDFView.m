@@ -40,4 +40,47 @@
     [self drawInContext:UIGraphicsGetCurrentContext() atPageNo:pageNO];
 }
 
+//http://blog.csdn.net/yiyaaixuexi/article/details/7645725
+
+//CGPDFDocumentRef GetPDFDocumentRef(NSString *filename)
+//{
+//    CFStringRef path;
+//    CFURLRef url;
+//    CGPDFDocumentRef document;
+//    size_t count;
+//
+//    path = CFStringCreateWithCString (NULL, [filename UTF8String], kCFStringEncodingUTF8);
+//    url = CFURLCreateWithFileSystemPath (NULL, path, kCFURLPOSIXPathStyle, 0);
+//
+//    CFRelease (path);
+//    document = CGPDFDocumentCreateWithURL (url);
+//    CFRelease(url);
+//    count = CGPDFDocumentGetNumberOfPages (document);
+//    if (count == 0) {
+//        printf("[%s] needs at least one page!\n", [filename UTF8String]);
+//        return NULL;
+//    } else {
+//        printf("[%ld] pages loaded in this PDF!\n", count);
+//    }
+//    
+//    
+//    return document;
+//}
+//
+//void DisplayPDFPage (CGContextRef myContext, size_t pageNumber, NSString *filename)
+//{
+//    CGPDFDocumentRef document;
+//    CGPDFPageRef page;
+//    
+//    ////    这样显示出来的pdf单页是倒立的，Quartz坐标系和UIView坐标系不一样所致，调整坐标系，使pdf正立
+//    //    CGContextRef context = UIGraphicsGetCurrentContext();
+//    //    CGContextTranslateCTM(context, 80, self.frame.size.height-60);
+//    //    CGContextScaleCTM(context, 1, -1);
+//
+//    document = GetPDFDocumentRef (filename);
+//    page = CGPDFDocumentGetPage (document, pageNumber);
+//    CGContextDrawPDFPage (myContext, page);
+//    CGPDFDocumentRelease (document);
+//}
+
 @end

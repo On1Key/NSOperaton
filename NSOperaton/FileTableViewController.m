@@ -38,7 +38,8 @@
                    [[NSBundle mainBundle] pathForResource:@"num_numbers" ofType:@"numbers"],
                    [[NSBundle mainBundle] pathForResource:@"error" ofType:@"csv"],
                    [[NSBundle mainBundle] pathForResource:@"list" ofType:@"pdf"],
-                   [[NSBundle mainBundle] pathForResource:@"NSOperatonDemo" ofType:@"mov"]];
+                   [[NSBundle mainBundle] pathForResource:@"NSOperatonDemo" ofType:@"mov"],
+                   [[NSBundle mainBundle] pathForResource:@"NSOperatonDemo" ofType:@"gif"]];
     }
     return _files;
 }

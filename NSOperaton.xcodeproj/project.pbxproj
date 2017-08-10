@@ -29,6 +29,7 @@
 		C57595361F049AD10039B7D9 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C57595341F049AD10039B7D9 /* TableViewCell.m */; };
 		C57595371F049AD10039B7D9 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57595351F049AD10039B7D9 /* TableViewCell.xib */; };
 		C575953A1F04A3610039B7D9 /* CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C57595391F04A3610039B7D9 /* CellModel.m */; };
+		C586FDA91F3C0C34004CC92F /* NSOperatonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C586FDA81F3C0C34004CC92F /* NSOperatonTests.m */; };
 		C5EC8E341F39A52F003BA9CA /* num_numbers.numbers in Resources */ = {isa = PBXBuildFile; fileRef = C5EC8E331F39A52F003BA9CA /* num_numbers.numbers */; };
 		C5EC8E361F39A83A003BA9CA /* num_excel.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = C5EC8E351F39A83A003BA9CA /* num_excel.xlsx */; };
 		C5EC8E391F39AAE6003BA9CA /* FileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5EC8E381F39AAE6003BA9CA /* FileTableViewController.m */; };
@@ -53,6 +54,16 @@
 		C5F9C0E41F1EFD27003FF376 /* View2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F9C0E31F1EFD27003FF376 /* View2Controller.m */; };
 		C5F9C0ED1F2200B7003FF376 /* CalculateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F9C0EC1F2200B7003FF376 /* CalculateManager.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C586FDAB1F3C0C34004CC92F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C52AD63C1EA8C84A0017AA01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C52AD6431EA8C84A0017AA01;
+			remoteInfo = NSOperaton;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B37C2C32601622A60E2E16BD /* Pods_NSOperaton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NSOperaton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +97,9 @@
 		C57595351F049AD10039B7D9 /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		C57595381F04A3610039B7D9 /* CellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellModel.h; sourceTree = "<group>"; };
 		C57595391F04A3610039B7D9 /* CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellModel.m; sourceTree = "<group>"; };
+		C586FDA61F3C0C34004CC92F /* NSOperatonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSOperatonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C586FDA81F3C0C34004CC92F /* NSOperatonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSOperatonTests.m; sourceTree = "<group>"; };
+		C586FDAA1F3C0C34004CC92F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5E4CB881EE6495A00847905 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C5EC8E331F39A52F003BA9CA /* num_numbers.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = num_numbers.numbers; sourceTree = "<group>"; };
 		C5EC8E351F39A83A003BA9CA /* num_excel.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = num_excel.xlsx; sourceTree = "<group>"; };
@@ -151,6 +165,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C586FDA31F3C0C34004CC92F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -177,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				C52AD6461EA8C84A0017AA01 /* NSOperaton */,
+				C586FDA71F3C0C34004CC92F /* NSOperatonTests */,
 				C52AD6451EA8C84A0017AA01 /* Products */,
 				6AA27C39DFDAED716DC6BCB8 /* Pods */,
 				82D7DEBEDEFC1338C177E992 /* Frameworks */,
@@ -187,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				C52AD6441EA8C84A0017AA01 /* NSOperaton.app */,
+				C586FDA61F3C0C34004CC92F /* NSOperatonTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -239,6 +262,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C586FDA71F3C0C34004CC92F /* NSOperatonTests */ = {
+			isa = PBXGroup;
+			children = (
+				C586FDA81F3C0C34004CC92F /* NSOperatonTests.m */,
+				C586FDAA1F3C0C34004CC92F /* Info.plist */,
+			);
+			path = NSOperatonTests;
+			sourceTree = "<group>";
+		};
 		C5EC8E3A1F39AC77003BA9CA /* file */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,10 +278,10 @@
 				C5EC8E381F39AAE6003BA9CA /* FileTableViewController.m */,
 				C5EC8E421F3AAC1D003BA9CA /* PDFViewController.h */,
 				C5EC8E431F3AAC1D003BA9CA /* PDFViewController.m */,
-				C5673C731F3AC10B0017EA85 /* NSOperatonDemo.gif */,
-				C5673C711F3ABBC30017EA85 /* NSOperatonDemo.mov */,
 				C5EC8E451F3AAD3E003BA9CA /* PDFView.h */,
 				C5EC8E461F3AAD3E003BA9CA /* PDFView.m */,
+				C5673C731F3AC10B0017EA85 /* NSOperatonDemo.gif */,
+				C5673C711F3ABBC30017EA85 /* NSOperatonDemo.mov */,
 				C5EC8E4A1F3AB385003BA9CA /* list.pdf */,
 				C5EC8E3E1F39B1E3003BA9CA /* error.csv */,
 				C5EC8E351F39A83A003BA9CA /* num_excel.xlsx */,
@@ -330,6 +362,24 @@
 			productReference = C52AD6441EA8C84A0017AA01 /* NSOperaton.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C586FDA51F3C0C34004CC92F /* NSOperatonTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C586FDAD1F3C0C34004CC92F /* Build configuration list for PBXNativeTarget "NSOperatonTests" */;
+			buildPhases = (
+				C586FDA21F3C0C34004CC92F /* Sources */,
+				C586FDA31F3C0C34004CC92F /* Frameworks */,
+				C586FDA41F3C0C34004CC92F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C586FDAC1F3C0C34004CC92F /* PBXTargetDependency */,
+			);
+			name = NSOperatonTests;
+			productName = NSOperatonTests;
+			productReference = C586FDA61F3C0C34004CC92F /* NSOperatonTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -343,6 +393,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 52WS8ZA2ER;
 						ProvisioningStyle = Automatic;
+					};
+					C586FDA51F3C0C34004CC92F = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C52AD6431EA8C84A0017AA01;
 					};
 				};
 			};
@@ -362,6 +417,7 @@
 			projectRoot = "";
 			targets = (
 				C52AD6431EA8C84A0017AA01 /* NSOperaton */,
+				C586FDA51F3C0C34004CC92F /* NSOperatonTests */,
 			);
 		};
 /* End PBXProject section */
@@ -388,6 +444,13 @@
 				C5F9C08B1F1323EA003FF376 /* InfoPlist.strings in Resources */,
 				C52AD6521EA8C84A0017AA01 /* Main.storyboard in Resources */,
 				C5EC8E4B1F3AB385003BA9CA /* list.pdf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C586FDA41F3C0C34004CC92F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,7 +537,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C586FDA21F3C0C34004CC92F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C586FDA91F3C0C34004CC92F /* NSOperatonTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C586FDAC1F3C0C34004CC92F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C52AD6431EA8C84A0017AA01 /* NSOperaton */;
+			targetProxy = C586FDAB1F3C0C34004CC92F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C52AD6501EA8C84A0017AA01 /* Main.storyboard */ = {
@@ -640,6 +719,34 @@
 			};
 			name = Release;
 		};
+		C586FDAE1F3C0C34004CC92F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				INFOPLIST_FILE = NSOperatonTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.NSOperatonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSOperaton.app/NSOperaton";
+			};
+			name = Debug;
+		};
+		C586FDAF1F3C0C34004CC92F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				INFOPLIST_FILE = NSOperatonTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.NSOperatonTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NSOperaton.app/NSOperaton";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -660,6 +767,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C586FDAD1F3C0C34004CC92F /* Build configuration list for PBXNativeTarget "NSOperatonTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C586FDAE1F3C0C34004CC92F /* Debug */,
+				C586FDAF1F3C0C34004CC92F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

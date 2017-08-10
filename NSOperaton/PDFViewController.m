@@ -15,18 +15,21 @@
 @end
 
 @implementation PDFViewController
-
+CGPDFDocumentRef getDocumentRef(NSString *filename){
+    CFURLRef pdfURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), (__bridge CFStringRef)filename, NULL, NULL);
+    CGPDFDocumentRef pdfDocument = CGPDFDocumentCreateWithURL((CFURLRef)pdfURL);
+    CFRelease(pdfURL);
+    return pdfDocument;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
     
     NSString *filename = @"list.pdf";
-    CFURLRef pdfURL = CFBundleCopyResourceURL(CFBundleGetMainBundle(), (__bridge CFStringRef)filename, NULL, NULL);
-    CGPDFDocumentRef pdfDocument = CGPDFDocumentCreateWithURL((CFURLRef)pdfURL);
-    _pdfDocument = pdfDocument;
-    CFRelease(pdfURL);
     self.title = filename;
+    _pdfDocument = getDocumentRef(filename);
+    
     
     NSDictionary *options = [NSDictionary dictionaryWithObject:
                              [NSNumber numberWithInteger: UIPageViewControllerSpineLocationMin]
@@ -82,39 +85,5 @@
     [pageController.view addSubview:pdfView];
     return pageController;
 }
-
-//CGPDFDocumentRef GetPDFDocumentRef(NSString *filename)
-//{
-//    CFStringRef path;
-//    CFURLRef url;
-//    CGPDFDocumentRef document;
-//    size_t count;
-//    
-//    path = CFStringCreateWithCString (NULL, [filename UTF8String], kCFStringEncodingUTF8);
-//    url = CFURLCreateWithFileSystemPath (NULL, path, kCFURLPOSIXPathStyle, 0);
-//    
-//    CFRelease (path);
-//    document = CGPDFDocumentCreateWithURL (url);
-//    CFRelease(url);
-//    count = CGPDFDocumentGetNumberOfPages (document);
-//    if (count == 0) {
-//        printf("[%s] needs at least one page!\n", [filename UTF8String]);
-//        return NULL;
-//    } else {
-//        printf("[%ld] pages loaded in this PDF!\n", count);
-//    }
-//    return document;
-//}
-//
-//void DisplayPDFPage (CGContextRef myContext, size_t pageNumber, NSString *filename)
-//{
-//    CGPDFDocumentRef document;
-//    CGPDFPageRef page;
-//    
-//    document = GetPDFDocumentRef (filename);
-//    page = CGPDFDocumentGetPage (document, pageNumber);
-//    CGContextDrawPDFPage (myContext, page);
-//    CGPDFDocumentRelease (document);
-//}
 
 @end

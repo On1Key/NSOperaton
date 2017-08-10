@@ -64,6 +64,7 @@
 /**历史使用*/
 @property (nonatomic) NSInteger page;
 
+
 + (instancetype)parseData;
 + (NSString *)jsonString;
 + (id)jsonDic;

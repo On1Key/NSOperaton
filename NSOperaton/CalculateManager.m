@@ -21,7 +21,8 @@
 - (long (^)(int, int)) sumBlock {
     int base = 100;
     return [ ^ long (int a, int b) {
-        return base + a + b;
+        _result += base + a + b;
+        return _result;
     } copy];
 }
 @end

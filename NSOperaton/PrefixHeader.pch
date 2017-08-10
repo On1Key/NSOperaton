@@ -10,20 +10,29 @@
 #define PrefixHeader_pch
 
 #import <UIKit/UIKit.h>
-#import "CEBaseInteractionController.h"
-#import "CEReversibleAnimationController.h"
+#import <VCTransitionsLibrary/CEBaseInteractionController.h>
+#import <VCTransitionsLibrary/CEReversibleAnimationController.h>
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
+#import <Aspects/Aspects.h>
+#import <VIAnalyticsKit/VIAnalyticsAOP.h>
+#import <MJExtension/MJExtension.h>
+//#import "Aspects.h"
+//#import "VIAnalyticsAOP.h"
+//#import "MJExtension.h"
+//#import "TTTAttributedLabel.h"
+//#import "CEBaseInteractionController.h"
+//#import "CEReversibleAnimationController.h"
+
+#import <SDWebImage/UIImageView+WebCache.h>
+
 #import "BaseViewController.h"
 #import "NavigationController.h"
 #import "UILabel+LinkUrl.h"
-#import "TTTAttributedLabel.h"
 #import "NSString+scan.h"
 #import "CalculateManager.h"
-#import "Aspects.h"
 #import "AnalysisManager.h"
-#import "VIAnalyticsAOP.h"
-#import "MJExtension.h"
 #import "JsonModel.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+
 
 #define interactionControllers @[@"CEHorizontalSwipeInteractionController",\
                                     @"CEPinchInteractionController",\

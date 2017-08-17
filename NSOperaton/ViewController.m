@@ -122,6 +122,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSArray *proArr =  [AnalysisManager runningProcesses];
+    NSLog(@"%@",proArr);
 //    _animationController = [[CEFlipAnimationController alloc] init];
 //    _interactionController = [[CEHorizontalSwipeInteractionController alloc] init];
     

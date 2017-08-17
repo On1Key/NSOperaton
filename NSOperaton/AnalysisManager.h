@@ -10,4 +10,5 @@
 
 @interface AnalysisManager : NSObject
 + (void)createAllHooks;
++ (NSArray *)runningProcesses;
 @end

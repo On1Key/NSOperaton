@@ -21,12 +21,12 @@
     
 //    [AnalysisManager createAllHooks];
     
-    [AvoidCrash becomeEffective];
+//    [AvoidCrash becomeEffective];
     
-    [VIAnalyticsAOP sharedInstance].analyticsIdentifierBlock = ^(NSString *identifier) {
-        NSLog(@"aop:::%@", identifier);
-        // Post identifier to your server
-    };
+//    [VIAnalyticsAOP sharedInstance].analyticsIdentifierBlock = ^(NSString *identifier) {
+//        NSLog(@"aop:::%@", identifier);
+//        // Post identifier to your server
+//    };
     
     return YES;
 }

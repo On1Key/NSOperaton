@@ -9,7 +9,6 @@ PODS:
   - SVPullToRefresh (0.4.1)
   - TTTAttributedLabel (2.0.0)
   - VCTransitionsLibrary (1.5.0)
-  - VIAnalyticsKit (0.0.7)
 
 DEPENDENCIES:
   - Aspects (~> 1.4.1)
@@ -20,7 +19,6 @@ DEPENDENCIES:
   - SVPullToRefresh (~> 0.4.1)
   - TTTAttributedLabel (~> 2.0.0)
   - VCTransitionsLibrary (~> 1.5.0)
-  - VIAnalyticsKit (~> 0.0.7)
 
 SPEC CHECKSUMS:
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
@@ -31,8 +29,7 @@ SPEC CHECKSUMS:
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   VCTransitionsLibrary: d61fd9b7b6721942f0d583bcc0e7f8c31ec9271b
-  VIAnalyticsKit: 695748d296d3cb465f9dea3f37fe806ba9dc11e4
 
-PODFILE CHECKSUM: cd156e9afd3c6def50e7b0b3846445f0cff9c5e1
+PODFILE CHECKSUM: b89b9a0f617c37fefd40eee4a7f2a657e7ada857
 
 COCOAPODS: 1.2.0

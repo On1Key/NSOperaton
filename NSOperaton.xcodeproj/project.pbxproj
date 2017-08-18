@@ -45,6 +45,9 @@
 		C5F161DA1ED5373300A130E5 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F161D91ED5373300A130E5 /* TableViewController.m */; };
 		C5F161EA1ED8348A00A130E5 /* UIButton+Delay.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F161E71ED8348A00A130E5 /* UIButton+Delay.m */; };
 		C5F161EB1ED8348A00A130E5 /* UIButton+touch.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F161E91ED8348A00A130E5 /* UIButton+touch.m */; };
+		C5F2BD311F46BF6A00592A50 /* nuo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C5F2BD301F46BF6A00592A50 /* nuo.mp3 */; };
+		C5F2BD331F46BFAD00592A50 /* movie.MOV in Resources */ = {isa = PBXBuildFile; fileRef = C5F2BD321F46BFAD00592A50 /* movie.MOV */; };
+		C5F2BD361F46C53F00592A50 /* CusActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F2BD351F46C53F00592A50 /* CusActivity.m */; };
 		C5F4EABE1EC5A70B001FED90 /* NSMutableArray+safe.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F4EABD1EC5A70B001FED90 /* NSMutableArray+safe.m */; };
 		C5F9C08B1F1323EA003FF376 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5F9C08D1F1323EA003FF376 /* InfoPlist.strings */; };
 		C5F9C0941F132797003FF376 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C5F9C0961F132797003FF376 /* Localizable.strings */; };
@@ -127,6 +130,13 @@
 		C5F161E71ED8348A00A130E5 /* UIButton+Delay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Delay.m"; sourceTree = "<group>"; };
 		C5F161E81ED8348A00A130E5 /* UIButton+touch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+touch.h"; sourceTree = "<group>"; };
 		C5F161E91ED8348A00A130E5 /* UIButton+touch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+touch.m"; sourceTree = "<group>"; };
+		C5F2BBE51F45CCB600592A50 /* NSOperaton copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NSOperaton copy-Info.plist"; path = "/Users/mr.yang/Desktop/NSOperaton/NSOperaton copy-Info.plist"; sourceTree = "<absolute>"; };
+		C5F2BC1F1F45CCBD00592A50 /* NSOperaton copy 2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "NSOperaton copy 2-Info.plist"; path = "/Users/mr.yang/Desktop/NSOperaton/NSOperaton copy 2-Info.plist"; sourceTree = "<absolute>"; };
+		C5F2BC201F45CCC100592A50 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TableViewCell.xib; path = "Resources-iPad/NSOperaton/TableViewCell.xib"; sourceTree = "<group>"; };
+		C5F2BD301F46BF6A00592A50 /* nuo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nuo.mp3; sourceTree = "<group>"; };
+		C5F2BD321F46BFAD00592A50 /* movie.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = movie.MOV; sourceTree = "<group>"; };
+		C5F2BD341F46C53F00592A50 /* CusActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CusActivity.h; sourceTree = "<group>"; };
+		C5F2BD351F46C53F00592A50 /* CusActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CusActivity.m; sourceTree = "<group>"; };
 		C5F4EABC1EC5A70B001FED90 /* NSMutableArray+safe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+safe.h"; sourceTree = "<group>"; };
 		C5F4EABD1EC5A70B001FED90 /* NSMutableArray+safe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+safe.m"; sourceTree = "<group>"; };
 		C5F9C08C1F1323EA003FF376 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -197,11 +207,14 @@
 		C52AD63B1EA8C84A0017AA01 = {
 			isa = PBXGroup;
 			children = (
+				C5F2BC1E1F45CCBD00592A50 /* Resources-iPad */,
 				C52AD6461EA8C84A0017AA01 /* NSOperaton */,
 				C586FDA71F3C0C34004CC92F /* NSOperatonTests */,
 				C52AD6451EA8C84A0017AA01 /* Products */,
 				6AA27C39DFDAED716DC6BCB8 /* Pods */,
 				82D7DEBEDEFC1338C177E992 /* Frameworks */,
+				C5F2BBE51F45CCB600592A50 /* NSOperaton copy-Info.plist */,
+				C5F2BC1F1F45CCBD00592A50 /* NSOperaton copy 2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -226,6 +239,8 @@
 				C5EE23A61F25F4560073A89D /* AnalysisManager.m */,
 				C5F9C0E21F1EFD27003FF376 /* View2Controller.h */,
 				C5F9C0E31F1EFD27003FF376 /* View2Controller.m */,
+				C5F2BD341F46C53F00592A50 /* CusActivity.h */,
+				C5F2BD351F46C53F00592A50 /* CusActivity.m */,
 				C5F9C0C21F178BED003FF376 /* Header.h */,
 				C5F9C0A11F15D495003FF376 /* WebController.h */,
 				C5F9C0A21F15D495003FF376 /* WebController.m */,
@@ -299,6 +314,14 @@
 			name = Transtion;
 			sourceTree = "<group>";
 		};
+		C5F2BC1E1F45CCBD00592A50 /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				C5F2BC201F45CCC100592A50 /* TableViewCell.xib */,
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
 		C5F9C09C1F132D03003FF376 /* Cat */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +353,8 @@
 				C52AD6621EA8DE0B0017AA01 /* CustomOperation.m */,
 				C52AD65E1EA8D9F10017AA01 /* CustomBlockOperation.h */,
 				C52AD65F1EA8D9F10017AA01 /* CustomBlockOperation.m */,
+				C5F2BD321F46BFAD00592A50 /* movie.MOV */,
+				C5F2BD301F46BF6A00592A50 /* nuo.mp3 */,
 				C57595261F0374050039B7D9 /* 1.jpg */,
 				C57595271F0374050039B7D9 /* 2.png */,
 				C57595281F0374050039B7D9 /* 3.jpg */,
@@ -430,9 +455,11 @@
 				C5673C721F3ABBC30017EA85 /* NSOperatonDemo.mov in Resources */,
 				C5EC8E361F39A83A003BA9CA /* num_excel.xlsx in Resources */,
 				C52AD6571EA8C84A0017AA01 /* LaunchScreen.storyboard in Resources */,
+				C5F2BD331F46BFAD00592A50 /* movie.MOV in Resources */,
 				C5EC8E401F39B1E3003BA9CA /* error.csv in Resources */,
 				C575952B1F0374050039B7D9 /* 1.jpg in Resources */,
 				C5F9C0941F132797003FF376 /* Localizable.strings in Resources */,
+				C5F2BD311F46BF6A00592A50 /* nuo.mp3 in Resources */,
 				C575952C1F0374050039B7D9 /* 2.png in Resources */,
 				C575952F1F0374050039B7D9 /* 5.png in Resources */,
 				C57595371F049AD10039B7D9 /* TableViewCell.xib in Resources */,
@@ -531,6 +558,7 @@
 				C5EE23A71F25F4560073A89D /* AnalysisManager.m in Sources */,
 				C5EC8E471F3AAD3E003BA9CA /* PDFView.m in Sources */,
 				C57595361F049AD10039B7D9 /* TableViewCell.m in Sources */,
+				C5F2BD361F46C53F00592A50 /* CusActivity.m in Sources */,
 				C5F161EA1ED8348A00A130E5 /* UIButton+Delay.m in Sources */,
 				C5F9C0ED1F2200B7003FF376 /* CalculateManager.m in Sources */,
 				C575953A1F04A3610039B7D9 /* CellModel.m in Sources */,
@@ -775,6 +803,7 @@
 				C586FDAF1F3C0C34004CC92F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

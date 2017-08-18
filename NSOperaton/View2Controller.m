@@ -8,6 +8,7 @@
 
 #import "View2Controller.h"
 #import <Social/Social.h>
+#import "CusActivity.h"
 
 @interface View2Controller ()<UITableViewDelegate,UITableViewDataSource,UIDocumentInteractionControllerDelegate>
 /**<#statements#>*/
@@ -21,7 +22,7 @@
 
 - (NSArray *)dataArray{
     if (!_dataArray) {
-        _dataArray = @[@"系统分享-UIDocument",@"系统分享-UIActivity",@"系统分享-SLCompose"];
+        _dataArray = @[@"系统分享-UIDocument",@"系统分享-UIActivity",@"系统分享-SLCompose",@"系统分享-mov",@"系统分享-mp3"];
     }
     return _dataArray;
 }
@@ -97,9 +98,9 @@
             for (int i = 1; i < 9; i ++) {
                 NSString *localPath = [[NSBundle mainBundle] pathForResource:[@(i) stringValue] ofType:@"jpg"];
                 NSData *localData = [NSData dataWithContentsOfFile:localPath];
-                UIImage *localImage = [UIImage imageWithData:localData];
+//                UIImage *localImage = [UIImage imageWithData:localData];
                 if (localPath) {
-                    [localPaths addObject:localImage];
+                    [localPaths addObject:localData];
                 }
             }
             
@@ -118,7 +119,7 @@
             //    };
             //    activity.completionHandler = myBlock;
             
-            activity.excludedActivityTypes = @[UIActivityTypePostToTencentWeibo];//@[ UIActivityTypePostToFacebook,UIActivityTypePostToTwitter, UIActivityTypePostToWeibo, UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePrint,UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList,UIActivityTypePostToFlickr,UIActivityTypePostToVimeo,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
+//            activity.excludedActivityTypes = @[UIActivityTypePostToTencentWeibo];//@[ UIActivityTypePostToFacebook,UIActivityTypePostToTwitter, UIActivityTypePostToWeibo, UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePrint,UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList,UIActivityTypePostToFlickr,UIActivityTypePostToVimeo,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
             
             if (activity) {
                 [self presentViewController:activity animated:TRUE completion:nil];
@@ -174,6 +175,52 @@
                     NSLog(@"点击了取消");
                 }
             };
+        }break;
+        case 3:{
+            NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"movie" ofType:@"mov"];
+//            NSData *videoData = [NSData dataWithContentsOfFile:videoPath];
+//            UIVideoEditorController *sss;
+            NSArray *items = @[];
+            if (videoPath) {
+                items = @[videoPath];
+            }
+            
+            CusActivity *cusAct1 = [[CusActivity alloc] initWithTitle:@"朋友圈" type:ActivityCusServiceWeixinFriends];
+            CusActivity *cusAct2 = [[CusActivity alloc] initWithTitle:@"微信" type:ActivityCusServiceWeixin];
+            NSArray *cusActs =  @[cusAct1,cusAct2];
+            [cusActs enumerateObjectsUsingBlock:^(CusActivity  * _Nonnull act, NSUInteger idx, BOOL * _Nonnull stop) {
+                act.urlString = @"http://www.baidu.com";
+                act.shareDescription = @"分享内容";
+                act.shareTitle = @"分享标题";
+                act.image = [UIImage imageNamed:@"cash_ic_reason"];
+            }];
+            
+            UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:cusActs];
+//            activity.excludedActivityTypes = @[UIActivityTypePostToTencentWeibo];
+            
+            activity.completionWithItemsHandler = ^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+                
+            };
+            
+            if (activity) {
+                [self presentViewController:activity animated:TRUE completion:nil];
+            }
+        }break;
+        case 4:{
+            NSString *videoPath = [[NSBundle mainBundle] pathForResource:@"nuo" ofType:@"mp3"];
+            NSData *videoData = [NSData dataWithContentsOfFile:videoPath];
+            
+            NSArray *items = @[];
+            if (videoData) {
+                items = @[videoData];
+            }
+            
+            UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
+//            activity.excludedActivityTypes = @[UIActivityTypePostToTencentWeibo];
+            
+            if (activity) {
+                [self presentViewController:activity animated:TRUE completion:nil];
+            }
         }break;
             
         default:

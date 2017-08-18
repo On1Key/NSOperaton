@@ -7,7 +7,7 @@
 		<key>NSOperaton.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>10</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -18,6 +18,16 @@
 			<true/>
 		</dict>
 		<key>C586FDA51F3C0C34004CC92F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5F2BBAD1F45CCB600592A50</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5F2BBE61F45CCBC00592A50</key>
 		<dict>
 			<key>primary</key>
 			<true/>

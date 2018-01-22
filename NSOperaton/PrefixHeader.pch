@@ -17,11 +17,12 @@
 //#import <VIAnalyticsKit/VIAnalyticsAOP.h>
 #import <MJExtension/MJExtension.h>
 //#import "Aspects.h"
-//#import "VIAnalyticsAOP.h"
+#import "VIAnalyticsAOP.h"
 //#import "MJExtension.h"
 //#import "TTTAttributedLabel.h"
 //#import "CEBaseInteractionController.h"
 //#import "CEReversibleAnimationController.h"
+#import "TLCityPickerController.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -32,6 +33,10 @@
 #import "CalculateManager.h"
 #import "AnalysisManager.h"
 #import "JsonModel.h"
+#import "FDStackView.h"
+#import "YYTextField.h"
+#import "UIImage+boundRect.h"
+
 
 
 #define interactionControllers @[@"CEHorizontalSwipeInteractionController",\
@@ -53,6 +58,9 @@
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 #define IN_APP_STORE 2
+
+#define COLOR_RGBA(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define COLOR_RANDOM COLOR_RGBA(arc4random()%255,arc4random()%255,arc4random()%255,1.0f)
 
 //通用请求链接
 #define BASE_URL_TEST        @"http://yhdx-test.5ixc.com"//@"https://yhdx-test.youhaodongxi.com"

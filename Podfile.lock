@@ -1,35 +1,44 @@
 PODS:
   - Aspects (1.4.1)
   - AvoidCrash (1.6.7)
+  - FDStackView (1.0)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
   - SVPullToRefresh (0.4.1)
+  - TLCityPicker (1.0.0)
   - TTTAttributedLabel (2.0.0)
   - VCTransitionsLibrary (1.5.0)
+  - VIAnalyticsKit (0.0.7)
 
 DEPENDENCIES:
   - Aspects (~> 1.4.1)
   - AvoidCrash (~> 1.6.7)
+  - FDStackView (~> 1.0)
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.12)
   - SDWebImage (~> 3.8.0)
   - SVPullToRefresh (~> 0.4.1)
+  - TLCityPicker (~> 1.0.0)
   - TTTAttributedLabel (~> 2.0.0)
   - VCTransitionsLibrary (~> 1.5.0)
+  - VIAnalyticsKit (~> 0.0.7)
 
 SPEC CHECKSUMS:
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   AvoidCrash: 74136074de17bde312719c0b44fa0c9b26a4b652
+  FDStackView: 3a4bbe0ce9c35e974246a585168b9da8c32213f1
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
+  TLCityPicker: a05a66d639123893b085ea19ebd4dd63d6e7b27d
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   VCTransitionsLibrary: d61fd9b7b6721942f0d583bcc0e7f8c31ec9271b
+  VIAnalyticsKit: 695748d296d3cb465f9dea3f37fe806ba9dc11e4
 
-PODFILE CHECKSUM: b89b9a0f617c37fefd40eee4a7f2a657e7ada857
+PODFILE CHECKSUM: f4962f32dea92109fd423428cd472a9ed58fb200
 
 COCOAPODS: 1.2.0

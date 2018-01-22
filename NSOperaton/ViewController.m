@@ -16,6 +16,7 @@
 #import "FileTableViewController.h"
 
 #import "View2Controller.h"
+#import "TabBarController.h"
 //#import "AppDelegate.h"
 //#import ""
 //#import "CEHorizontalSwipeInteractionController.h"
@@ -25,7 +26,7 @@
 
 //#import <FFmpeg/libavformat/avformat.h>
 
-@interface ViewController ()<UIDocumentInteractionControllerDelegate>
+@interface ViewController ()<UIDocumentInteractionControllerDelegate,TLCityPickerDelegate>
 /**<#statements#>*/
 @property (nonatomic, strong) NSOperationQueue * parseQueue;
 /**<#statements#>*/
@@ -41,6 +42,8 @@
 //@property (nonatomic, strong) CEFlipAnimationController * animationController;
 ///**<#statements#>*/
 //@property (nonatomic, strong) CEHorizontalSwipeInteractionController * interactionController;
+/**<#statements#>*/
+@property (nonatomic) BOOL showLargeEnable;
 @end
 
 @implementation ViewController
@@ -88,10 +91,40 @@
 //    [self.navigationController pushViewController:setting animated:YES];
 }
 
-
+- (void)tabbarTest{
+    TabBarController *tabBar = [[TabBarController alloc] init];
+    [self.navigationController pushViewController:tabBar animated:YES];
+}
 
 #pragma mark - other
 
+- (IBAction)citytap:(UIButton *)sender {
+    
+    TLCityPickerController *cityPickerVC = [[TLCityPickerController alloc] init];
+    [cityPickerVC setDelegate:self];
+    
+    // 设置定位城市
+    cityPickerVC.locationCityID = @"1400010000";
+    
+    // 最近访问城市，如果不设置，将自动管理
+    //  cityPickerVC.commonCitys = [[NSMutableArray alloc] initWithArray: @[@"1400010000", @"100010000"]];
+    
+    // 热门城市，需手动设置
+//    cityPickerVC.hotCitys = @[@"100010000", @"200010000", @"300210000", @"600010000", @"300110000"];
+    cityPickerVC.hotCitys = @[@"成都", @"深圳", @"上海", @"长沙", @"杭州", @"南京", @"徐州", @"北京"];
+    
+    // 支持push、present方式跳入，但需要有UINavigationController
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:cityPickerVC] animated:YES completion:^{
+    }];
+    
+    // 设置当前城市
+//    cityPickerVC.currentCity = @"深圳";
+    // 设置热门城市
+//    cityPickerVC.hotCities = @[@"成都", @"深圳", @"上海", @"长沙", @"杭州", @"南京", @"徐州", @"北京"];
+}
+//- (void)cityPickerViewController:(CityPickerViewController *)cityPickerViewController selectedCityModel:(CityModel *)selectedCityModel {
+//    NSLog(@"统一输出 cityModel id pid spell name :%ld %ld %@ %@", (long)selectedCityModel.cityId, (long)selectedCityModel.pid, selectedCityModel.spell, selectedCityModel.name);
+//}
 
 - (IBAction)btntap:(id)sender {
     NSLog(@"%s---%d---\n---%@",__func__,__LINE__,@"----0------");
@@ -128,6 +161,57 @@
 //    _interactionController = [[CEHorizontalSwipeInteractionController alloc] init];
     
 //    av_register_all();
+    
+//    NSMutableArray *testEnumToDeleteArr = @[@"12",@"",@"1212",@"",@"212",@"",@"qwq"].mutableCopy;
+//    DLog(@"%@",testEnumToDeleteArr);
+//    for (NSString *str in testEnumToDeleteArr) {
+//        if ([str isEqualToString:@""]) {
+//            [testEnumToDeleteArr removeObject:str];
+//        }
+//    }
+//    DLog(@"%@",testEnumToDeleteArr);
+    
+    UIView *redView = [[UIView alloc] init];
+    redView.tag = 1;
+    redView.backgroundColor = [UIColor redColor];
+    
+    UIView *greenView = [[UIView alloc] init];
+    greenView.tag = 2;
+    greenView.backgroundColor = [UIColor greenColor];
+    
+    UIView *yellowView = [[UIView alloc] init];
+    yellowView.tag = 3;
+    yellowView.backgroundColor = [UIColor yellowColor];
+    
+    UIView *brownView = [[UIView alloc] init];
+    brownView.tag = 4;
+    brownView.backgroundColor = [UIColor brownColor];
+    
+    UITapGestureRecognizer *redTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeStackViewAction:)];
+    [redView addGestureRecognizer:redTap];
+    UITapGestureRecognizer *greenTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeStackViewAction:)];
+    [greenView addGestureRecognizer:greenTap];
+    UITapGestureRecognizer *yellowTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeStackViewAction:)];
+    [yellowView addGestureRecognizer:yellowTap];
+    UITapGestureRecognizer *brownTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeStackViewAction:)];
+    [brownView addGestureRecognizer:brownTap];
+    
+    FDStackView *stackView = [[FDStackView alloc] initWithFrame:CGRectMake(0, 100, SCREEN_WIDTH, 100)];
+    stackView.axis = UILayoutConstraintAxisHorizontal;
+    stackView.distribution = UIStackViewDistributionFillProportionally;
+    stackView.spacing = 10;
+    stackView.alignment = UIStackViewAlignmentFill;
+//    stackView
+    [self.view addSubview:stackView];
+    [stackView addArrangedSubview:redView];
+    [stackView addArrangedSubview:greenView];
+    [stackView addArrangedSubview:yellowView];
+    [stackView addArrangedSubview:brownView];
+    
+    CGFloat SCREENWIDTH = (SCREEN_WIDTH - stackView.spacing * (stackView.arrangedSubviews.count - 1))/stackView.arrangedSubviews.count;
+        
+//    [stackView addConstraints:@[[NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:(SCREENWIDTH)],[NSLayoutConstraint constraintWithItem:redView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1 constant:100],[NSLayoutConstraint constraintWithItem:greenView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:(SCREENWIDTH)],[NSLayoutConstraint constraintWithItem:greenView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0.5 constant:100],[NSLayoutConstraint constraintWithItem:yellowView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:(SCREENWIDTH)],[NSLayoutConstraint constraintWithItem:yellowView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:(100)],[NSLayoutConstraint constraintWithItem:brownView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:(SCREENWIDTH)],[NSLayoutConstraint constraintWithItem:brownView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:(100)]]];
+    
     
     [self numberFormatAction];
     
@@ -226,7 +310,7 @@
     NSLog(@"%@\n====%@==%@==%@:%@==%@==%@",NSTemporaryDirectory(),[self toExponent:123123123 rms:4],[self ChangeNumberFormat:checkStr],result,[checkStr substringWithRange:result.range],[self positiveFormat:checkStr count:2],[self positiveFormat:[@"12qw3,1q2,120.1200001" stringByReplacingOccurrencesOfString:@"," withString:@""] count:1]);
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"table", nil) style:UIBarButtonItemStylePlain target:self action:@selector(jump)];
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"set", nil) style:UIBarButtonItemStylePlain target:self action:@selector(setting)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"file", nil) style:UIBarButtonItemStylePlain target:self action:@selector(fileReviewAction)]];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"set", nil) style:UIBarButtonItemStylePlain target:self action:@selector(setting)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"file", nil) style:UIBarButtonItemStylePlain target:self action:@selector(fileReviewAction)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"TabBar", nil) style:UIBarButtonItemStylePlain target:self action:@selector(tabbarTest)]];
     
     
     NSInteger count = 10;
@@ -258,6 +342,98 @@
     
     [self operationTEst];
     
+}
+- (void)changeStackViewAction:(UIGestureRecognizer*)ges{
+    UIView *view = ges.view;
+    UIStackView *stackView = (UIStackView *)view.superview;
+    _showLargeEnable = !_showLargeEnable;
+    
+    if (_showLargeEnable) {
+//            stackView.arrangedSubviews[1].hidden = YES;
+//            stackView.arrangedSubviews[2].hidden = YES;
+//            stackView.arrangedSubviews[3].hidden = YES;
+//        [stackView removeArrangedSubview:stackView.arrangedSubviews[1]];
+//        [stackView.subviews[1] removeFromSuperview];
+//        [stackView removeArrangedSubview:stackView.arrangedSubviews[1]];
+//        [stackView.subviews[1] removeFromSuperview];
+//        [stackView removeArrangedSubview:stackView.arrangedSubviews[1]];
+//        [stackView.subviews[1] removeFromSuperview];
+        for (UIView *subview in stackView.arrangedSubviews) {
+            if (![subview isEqual:view]) {
+                [stackView removeArrangedSubview:subview];
+            }
+        }
+        [UIView animateWithDuration:0.5 animations:^{
+            [stackView layoutIfNeeded];
+        }];
+    }else{
+        for (int i = 0; i < 3; i ++) {
+            UIView *view = [[UIView alloc] init];
+            view.backgroundColor = COLOR_RANDOM;
+            [stackView addArrangedSubview:view];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeStackViewAction:)];
+            [view addGestureRecognizer:tap];
+        }
+        [UIView animateWithDuration:0.5 animations:^{
+//            stackView.arrangedSubviews[1].hidden = NO;
+//            stackView.arrangedSubviews[2].hidden = NO;
+//            stackView.arrangedSubviews[3].hidden = NO;
+//            [stackView reloadInputViews];
+            [stackView layoutIfNeeded];
+        } completion:^(BOOL finished) {
+            for (int i = 0; i < stackView.arrangedSubviews.count; i ++) {
+                UIView *subv = stackView.arrangedSubviews[i];
+                subv.tag = i;
+            }
+        }];
+        
+        
+    }
+    
+    return;
+    [UIView animateWithDuration:0.5 animations:^{
+        for (UIView *subview in stackView.arrangedSubviews) {
+            if (_showLargeEnable) {
+                if ([view isEqual:subview]) {
+                    subview.hidden = NO;
+                }else{
+                    subview.hidden = YES;
+                }
+            }else{
+                subview.hidden = NO;
+            }
+            
+        }
+    }];
+    return;
+    
+    switch (view.tag) {
+        case 1:{
+            int curType = stackView.axis;
+            if (curType >= 2) {
+                curType = 0;
+            }
+            stackView.axis = curType;
+        }break;
+        case 2:{
+            int curType = stackView.distribution;
+            if (curType >= 5) {
+                curType = 0;
+            }
+            stackView.distribution = curType;
+        }break;
+        case 3:{
+            int curType = stackView.alignment;
+            if (curType >= 8) {
+                curType = 0;
+            }
+            stackView.alignment = curType;
+        }break;
+            
+        default:
+            break;
+    }
+    [stackView reloadInputViews];
 }
 - (void)blockDispatchTest{
     // Do any additional setup after loading the view, typically from a nib.

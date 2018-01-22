@@ -9,6 +9,7 @@
 #import "TableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "NSObject+url.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface TableViewCell()
 /**<#statements#>*/
@@ -54,6 +55,7 @@
 - (void)setCellModel:(CellModel *)cellModel{
     _cellModel = cellModel;
     
+    
     if (![cellModel isKindOfClass:[CellModel class]]) {
         return;
     }
@@ -72,6 +74,8 @@
     
     NSString *url = cellModel.url;
     
+//    UIImageView显示视频流
+//    http://www.jianshu.com/p/7b5a584a4371
     [self.iocnIV sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
 //        NSLog(@"%ld==%@===%@",indexPath.row,error,image);
     }];

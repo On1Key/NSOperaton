@@ -30,6 +30,41 @@ MJExtensionCodingImplementation
     id obj = [arr lastObject];
     DLog(@"%@==%@",obj,obj[2]);
     
+#warning TODO - 解析如下类型数据结构？？？
+//    "all_city": {
+//    -"A": {
+//        "106": "阿拉善盟",
+//        "109": "鞍山市",
+//        "193": "安庆市",
+//        "244": "安阳市",
+//        "403": "阿坝藏族羌族自治州",
+//        "409": "安顺市",
+//        "436": "阿里地区",
+//        "446": "安康市",
+//        "482": "阿克苏地区",
+//        "488": "阿勒泰地区"
+//    },
+//    -"B": {
+//        "1": "北京市",
+//        "78": "保定市",
+//        "96": "包头市",
+//        "102": "巴彦淖尔市",
+//        "111": "本溪市",
+//        "126": "白山市",
+//        "128": "白城市",
+//        "188": "蚌埠市",
+//        "200": "亳州市",
+//        "238": "滨州市",
+//        "314": "北海市",
+//        "319": "百色市",
+//        "401": "巴中市",
+//        "412": "毕节市",
+//        "418": "保山市",
+//        "440": "宝鸡市",
+//        "451": "白银市",
+//        "480": "博尔塔拉蒙古自治州",
+//        "481": "巴音郭楞蒙古自治州"
+//    }；
     
     if (arc4random() % 2 == 0) {
         NSDictionary *dicNew = @{@"data":@{
@@ -46,6 +81,10 @@ MJExtensionCodingImplementation
                                                    @"name":@"卡2",
                                                    @"bank":@"弄行"
                                                    }],
+                                         @"strings":@[@{@"prompt":@"123"},
+                                                      @{@"prompt":@"abc"},
+                                                      @{@"prompt":@"@#$"},
+                                                      @{@"prompt":@"_+="}]
                                          }};
         
         [JsonSubModel mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
@@ -73,7 +112,7 @@ MJExtensionCodingImplementation
                      @"monthAllCanDrawMoney":@"data.mc",
                      @"latestDrawHistoryModels":@"data.ms",
                      @"dayLimitDrawCount":@"data.ti",
-                     @"promptMessage":@"data.strings[1].prompt"};
+                     @"promptMessage":@"data.strings[5].prompt"};
         }];
         
         JsonModel *dicNewModel = [JsonModel mj_objectWithKeyValues:dicNew];
@@ -85,7 +124,7 @@ MJExtensionCodingImplementation
             
         }else{
             NSDictionary *dicVa = dicNewModel.mj_keyValues;
-            DLog(@"%@",dicVa);
+            DLog(@"%@",[NSString stringWithFormat:@"%@",dicVa]);
         }
         NSString *file = [NSHomeDirectory() stringByAppendingPathComponent:@"tmp/bag.txt"];
         // Encoding

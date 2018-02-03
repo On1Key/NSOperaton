@@ -2,6 +2,9 @@ PODS:
   - Aspects (1.4.1)
   - AvoidCrash (1.6.7)
   - FDStackView (1.0)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
   - MJExtension (3.0.13)
   - MJRefresh (3.1.12)
   - SDWebImage (3.8.2):
@@ -17,6 +20,7 @@ DEPENDENCIES:
   - Aspects (~> 1.4.1)
   - AvoidCrash (~> 1.6.7)
   - FDStackView (~> 1.0)
+  - FMDB (~> 2.6.2)
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.12)
   - SDWebImage (~> 3.8.0)
@@ -30,6 +34,7 @@ SPEC CHECKSUMS:
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   AvoidCrash: 74136074de17bde312719c0b44fa0c9b26a4b652
   FDStackView: 3a4bbe0ce9c35e974246a585168b9da8c32213f1
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
@@ -39,6 +44,6 @@ SPEC CHECKSUMS:
   VCTransitionsLibrary: d61fd9b7b6721942f0d583bcc0e7f8c31ec9271b
   VIAnalyticsKit: 695748d296d3cb465f9dea3f37fe806ba9dc11e4
 
-PODFILE CHECKSUM: f4962f32dea92109fd423428cd472a9ed58fb200
+PODFILE CHECKSUM: 1170a8d38a57ee717b23a28ad1fc77b648233a64
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.4.0.beta.2

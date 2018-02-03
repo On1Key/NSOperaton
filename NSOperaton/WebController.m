@@ -21,17 +21,27 @@
     UIWebView *web = [[UIWebView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:web];
     
-    [web loadRequest:[NSURLRequest requestWithURL:_url]];
+    if (_url) {
+        [web loadRequest:[NSURLRequest requestWithURL:_url]];
+    }else{
+        if (_localHtmlData) {
+            [web loadHTMLString:_localHtmlData baseURL:nil];
+        }
+    }
+    
+    
     
     if (!self.navigationItem.leftBarButtonItem) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(back)];
+        self.navigationItem.leftBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:@"Dismiss" style:UIBarButtonItemStylePlain target:self action:@selector(dismissBack)],[[UIBarButtonItem alloc] initWithTitle:@"Pop" style:UIBarButtonItemStylePlain target:self action:@selector(popBack)]];
     }
     
     
     
 }
-
-- (void)back{
+- (void)popBack{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)dismissBack{
 //    if (self.navigationController) {
 //        
 //        //        if (self.navigationController.viewControllers.count <= 1) {
@@ -43,7 +53,6 @@
 //    }else{
 //        [self dismissViewControllerAnimated:YES completion:nil];
 //    }
-    
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     
 }

@@ -17,6 +17,7 @@
 
 #import "View2Controller.h"
 #import "TabBarController.h"
+#import "DBTableController.h"
 //#import "AppDelegate.h"
 //#import ""
 //#import "CEHorizontalSwipeInteractionController.h"
@@ -94,6 +95,10 @@
 - (void)tabbarTest{
     TabBarController *tabBar = [[TabBarController alloc] init];
     [self.navigationController pushViewController:tabBar animated:YES];
+}
+- (void)fmdbTest{
+    DBTableController *db = [DBTableController new];
+    [self.navigationController pushViewController:db animated:YES];
 }
 
 #pragma mark - other
@@ -310,7 +315,7 @@
     NSLog(@"%@\n====%@==%@==%@:%@==%@==%@",NSTemporaryDirectory(),[self toExponent:123123123 rms:4],[self ChangeNumberFormat:checkStr],result,[checkStr substringWithRange:result.range],[self positiveFormat:checkStr count:2],[self positiveFormat:[@"12qw3,1q2,120.1200001" stringByReplacingOccurrencesOfString:@"," withString:@""] count:1]);
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"table", nil) style:UIBarButtonItemStylePlain target:self action:@selector(jump)];
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"set", nil) style:UIBarButtonItemStylePlain target:self action:@selector(setting)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"file", nil) style:UIBarButtonItemStylePlain target:self action:@selector(fileReviewAction)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"TabBar", nil) style:UIBarButtonItemStylePlain target:self action:@selector(tabbarTest)]];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"set", nil) style:UIBarButtonItemStylePlain target:self action:@selector(setting)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"file", nil) style:UIBarButtonItemStylePlain target:self action:@selector(fileReviewAction)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"TabBar", nil) style:UIBarButtonItemStylePlain target:self action:@selector(tabbarTest)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"FMDB", nil) style:UIBarButtonItemStylePlain target:self action:@selector(fmdbTest)]];
     
     
     NSInteger count = 10;

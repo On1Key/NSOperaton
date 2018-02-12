@@ -27,7 +27,7 @@
 
 //#import <FFmpeg/libavformat/avformat.h>
 
-@interface ViewController ()<UIDocumentInteractionControllerDelegate,TLCityPickerDelegate>
+@interface ViewController ()
 /**<#statements#>*/
 @property (nonatomic, strong) NSOperationQueue * parseQueue;
 /**<#statements#>*/
@@ -51,7 +51,7 @@
 
 //- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 //    NSInteger num = arc4random()%2;
-//    NSURL *url = [NSURL URLWithString:@"http://121.17.126.24:10087/AppCorrect/CorrectTask?taskId=16&stuId=21&userId=59&schCode=sszx&teaId=53"];
+//    NSURL *url = [NSURL URLWithString:@"https://www.baidu.com"];
 //    NSURLRequest *req = [NSURLRequest requestWithURL:url];
 ////    if (num == 0) {
 ////        self.webView.hidden = NO;
@@ -62,86 +62,12 @@
 //        self.wkWebview.hidden = NO;
 //        [self.wkWebview loadRequest:req];
 ////    }
-//    
-//    
+//
+//
 //}
-- (void)jump{
-    TableViewController *table =  [TableViewController new];
-    
-//    NavigationController *navi = (NavigationController *)self.navigationController;
-    
-//    self.settingsInteractionController = [[CEHorizontalSwipeInteractionController alloc] init];
-//    self.settingsAnimationController = [[CEFoldAnimationController alloc] init];
-//    DLog(@"%@",self.navigationController);
-    [self.navigationController pushViewController:table animated:YES];
-//    [self.navigationController presentViewController:[[UINavigationController alloc] initWithRootViewController:table] animated:YES completion:nil];
-    
-}
-- (void)fileReviewAction{
-    FileTableViewController *file = [[FileTableViewController alloc] init];
-    [self.navigationController pushViewController:file animated:YES];
-}
-- (void)setting{
-    
-    [JsonModel parseData];
-    
-    View2Controller *vc = [View2Controller new];
-    [self.navigationController pushViewController:vc animated:YES];
-    
-//    SettingsViewController *setting = [[SettingsViewController alloc] init];
-//    [self.navigationController pushViewController:setting animated:YES];
-}
-
-- (void)tabbarTest{
-    TabBarController *tabBar = [[TabBarController alloc] init];
-    [self.navigationController pushViewController:tabBar animated:YES];
-}
-- (void)fmdbTest{
-    DBTableController *db = [DBTableController new];
-    [self.navigationController pushViewController:db animated:YES];
-}
 
 #pragma mark - other
 
-- (IBAction)citytap:(UIButton *)sender {
-    
-    TLCityPickerController *cityPickerVC = [[TLCityPickerController alloc] init];
-    [cityPickerVC setDelegate:self];
-    
-    // 设置定位城市
-    cityPickerVC.locationCityID = @"1400010000";
-    
-    // 最近访问城市，如果不设置，将自动管理
-    //  cityPickerVC.commonCitys = [[NSMutableArray alloc] initWithArray: @[@"1400010000", @"100010000"]];
-    
-    // 热门城市，需手动设置
-//    cityPickerVC.hotCitys = @[@"100010000", @"200010000", @"300210000", @"600010000", @"300110000"];
-    cityPickerVC.hotCitys = @[@"成都", @"深圳", @"上海", @"长沙", @"杭州", @"南京", @"徐州", @"北京"];
-    
-    // 支持push、present方式跳入，但需要有UINavigationController
-    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:cityPickerVC] animated:YES completion:^{
-    }];
-    
-    // 设置当前城市
-//    cityPickerVC.currentCity = @"深圳";
-    // 设置热门城市
-//    cityPickerVC.hotCities = @[@"成都", @"深圳", @"上海", @"长沙", @"杭州", @"南京", @"徐州", @"北京"];
-}
-//- (void)cityPickerViewController:(CityPickerViewController *)cityPickerViewController selectedCityModel:(CityModel *)selectedCityModel {
-//    NSLog(@"统一输出 cityModel id pid spell name :%ld %ld %@ %@", (long)selectedCityModel.cityId, (long)selectedCityModel.pid, selectedCityModel.spell, selectedCityModel.name);
-//}
-
-- (IBAction)btntap:(id)sender {
-    NSLog(@"%s---%d---\n---%@",__func__,__LINE__,@"----0------");
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSLog(@"%s---%d---\n---%@",__func__,__LINE__,@"----2------");
-    });
-    
-    BaseViewController *newVC = [[BaseViewController alloc] init];
-    newVC.settingsInteractionController = [[NSClassFromString(interactionControllers[0]) alloc] init];
-    newVC.settingsAnimationController = [[NSClassFromString(animationControllers[6]) alloc] init];
-    [self presentViewController:newVC animated:YES completion:nil];
-}
 - (void)numberFormatAction{
     long long card  = 6228480022222434444;
     long long idNo = 130125199112017312;
@@ -157,8 +83,79 @@
     DLog(@"%@",scienceStr)
     
 }
+#pragma mark -
+#pragma mark JPG格式的图片 根据图片部份数据得到图片的size
++ (CGSize)downloadJpgImage:(NSString*)strUrl
+{
+    NSLog(@"________calculate_download_imgSize_time_start");
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:strUrl]];
+    [request setValue:@"bytes=0-209" forHTTPHeaderField:@"Range"];
+    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    NSLog(@"________calculate_download_imgSize_time_end");
+    return [self jpgImageSizeWithHeaderData:data];
+}
+
++ (CGSize)jpgImageSizeWithHeaderData:(NSData *)data
+{
+    if ([data length] <= 0x58) {
+        return CGSizeZero;
+    }
+    if ([data length] < 210) {// 肯定只有一个DQT字段
+        short w1 = 0, w2 = 0;
+        [data getBytes:&w1 range:NSMakeRange(0x60, 0x1)];
+        [data getBytes:&w2 range:NSMakeRange(0x61, 0x1)];
+        short w = (w1 << 8) + w2;
+        short h1 = 0, h2 = 0;
+        [data getBytes:&h1 range:NSMakeRange(0x5e, 0x1)];
+        [data getBytes:&h2 range:NSMakeRange(0x5f, 0x1)];
+        short h = (h1 << 8) + h2;
+        return CGSizeMake(w, h);
+    } else {
+        short word = 0x0;
+        [data getBytes:&word range:NSMakeRange(0x15, 0x1)];
+        if (word == 0xdb) {
+            [data getBytes:&word range:NSMakeRange(0x5a, 0x1)];
+            if (word == 0xdb) {// 两个DQT字段
+                short w1 = 0, w2 = 0;
+                [data getBytes:&w1 range:NSMakeRange(0xa5, 0x1)];
+                [data getBytes:&w2 range:NSMakeRange(0xa6, 0x1)];
+                short w = (w1 << 8) + w2;
+                short h1 = 0, h2 = 0;
+                [data getBytes:&h1 range:NSMakeRange(0xa3, 0x1)];
+                [data getBytes:&h2 range:NSMakeRange(0xa4, 0x1)];
+                short h = (h1 << 8) + h2;
+                return CGSizeMake(w, h);
+            } else {// 一个DQT字段
+                short w1 = 0, w2 = 0;
+                [data getBytes:&w1 range:NSMakeRange(0x60, 0x1)];
+                [data getBytes:&w2 range:NSMakeRange(0x61, 0x1)];
+                short w = (w1 << 8) + w2;
+                short h1 = 0, h2 = 0;
+                [data getBytes:&h1 range:NSMakeRange(0x5e, 0x1)];
+                [data getBytes:&h2 range:NSMakeRange(0x5f, 0x1)];
+                short h = (h1 << 8) + h2;
+                return CGSizeMake(w, h);
+            }
+        } else {
+            return CGSizeZero;
+        }
+    }
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    NSInteger imgIndex = arc4random()%2;
+    NSString *imgUrlStr = @[@"http://img.zcool.cn/community/018d4e554967920000019ae9df1533.jpg@900w_1l_2o_100sh.jpg",@"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2239146502,165013516&fm=27&gp=0.jpg"][imgIndex];
+    NSLog(@"jpg__size==%ld=%@",imgIndex,NSStringFromCGSize([ViewController downloadJpgImage:imgUrlStr]));
+    
+    //默认timer在主runloop中运行，如果需要在所有loop（包括scrollview滚动的loop）运行，需要额外设置
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:1 repeats:YES block:^(NSTimer * _Nonnull timer) {
+        NSLog(@"Timer Running -----");
+    }];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    
     
     NSArray *proArr =  [AnalysisManager runningProcesses];
     NSLog(@"%@",proArr);
@@ -313,9 +310,6 @@
     
     
     NSLog(@"%@\n====%@==%@==%@:%@==%@==%@",NSTemporaryDirectory(),[self toExponent:123123123 rms:4],[self ChangeNumberFormat:checkStr],result,[checkStr substringWithRange:result.range],[self positiveFormat:checkStr count:2],[self positiveFormat:[@"12qw3,1q2,120.1200001" stringByReplacingOccurrencesOfString:@"," withString:@""] count:1]);
-
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"table", nil) style:UIBarButtonItemStylePlain target:self action:@selector(jump)];
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"set", nil) style:UIBarButtonItemStylePlain target:self action:@selector(setting)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"file", nil) style:UIBarButtonItemStylePlain target:self action:@selector(fileReviewAction)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"TabBar", nil) style:UIBarButtonItemStylePlain target:self action:@selector(tabbarTest)],[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"FMDB", nil) style:UIBarButtonItemStylePlain target:self action:@selector(fmdbTest)]];
     
     
     NSInteger count = 10;

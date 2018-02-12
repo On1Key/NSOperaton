@@ -60,7 +60,6 @@
     
 }
 - (void)back{
-//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)refresh{

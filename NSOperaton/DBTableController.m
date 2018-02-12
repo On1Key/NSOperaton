@@ -29,6 +29,85 @@
     }
     [self.tableView reloadData];
     
+    // -------------------异步同时完成测试1------------------
+    NSMutableArray *groArr0 = [NSMutableArray array];
+    NSMutableArray *groArr1 = [NSMutableArray array];
+    dispatch_group_t group_t = dispatch_group_create();
+    dispatch_queue_t queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_group_async(group_t, queue_t, ^{
+        NSLog(@"002-A");
+        for (int i = 0; i < 2; i ++) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [groArr0 addObject:@(i)];
+                NSLog(@"001=A=%@",groArr0);
+            });
+        }
+    });
+    dispatch_group_notify(group_t, dispatch_get_main_queue(), ^{
+        NSLog(@"002-B");
+        for (int i = 0; i < 3; i ++) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [groArr1 addObject:@(i)];
+                NSLog(@"002=B=%@",groArr1);
+            });
+        }
+    });
+    // ------------------异步同时完成测试2-------------------
+    dispatch_queue_t queue =  dispatch_queue_create(0, DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        NSLog(@"A");
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"C");
+    });
+    dispatch_barrier_async(queue, ^{
+        NSLog(@"拿到了A的值");
+    });
+    
+    dispatch_async(queue, ^{
+        NSLog(@"D");
+    });
+    dispatch_async(queue, ^{
+        NSLog(@"E");
+    });dispatch_async(queue, ^{
+        NSLog(@"F");
+    });
+    // ------------------异步同时完成测试3-------------------
+    dispatch_queue_t queue3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    __block dispatch_group_t groupEnter;
+    NSMutableArray *arr301 = [NSMutableArray array];
+    NSMutableArray *arr302 = [NSMutableArray array];
+    dispatch_async(queue3, ^{
+        
+        groupEnter = dispatch_group_create();
+        
+        dispatch_group_async(groupEnter, queue3, ^{
+            dispatch_group_enter(groupEnter);
+            NSLog(@"003------A");
+            for (int i = 0; i < 2; i ++) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [arr301 addObject:@(i)];
+                    NSLog(@"003------A=%@",arr301);
+                });
+            }
+            
+        });
+        dispatch_group_async(groupEnter, queue3, ^{
+            dispatch_group_enter(groupEnter);
+            NSLog(@"003-------B");
+            for (int i = 0; i < 3; i ++) {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [arr302 addObject:@(i)];
+                    NSLog(@"003-------B=%@",arr302);
+                });
+            }
+        });
+        dispatch_group_notify(groupEnter, queue3, ^{
+            NSLog(@"003--------end:==%@==%@",arr301,arr302);
+        });
+    });
+    // -----------------------------------
+    
 }
 
 #pragma mark - Table view data source

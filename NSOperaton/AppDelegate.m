@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AvoidCrash.h"
+#import "MainTableController.h"
 
 @interface AppDelegate ()
 
@@ -27,6 +28,10 @@
         NSLog(@"aop:::%@", identifier);
         // Post identifier to your server
     };
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:  [[MainTableController alloc] init]];
+    [self.window makeKeyAndVisible];
+    
     
     return YES;
 }

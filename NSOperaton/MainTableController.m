@@ -21,6 +21,8 @@
 #import "TabBarController.h"
 #import "DBTableController.h"
 
+#import <SafariServices/SafariServices.h>
+
 
 #define reuse @"mainCellReuseId"
 
@@ -41,7 +43,7 @@
                         @"6、FMDB",
                         @"7、TLCityPickerController",
                         @"8、Animation Controller",
-                        @"9、"];
+                        @"9、Safari"];
     }
     return _dataSource;
 }
@@ -144,6 +146,20 @@
             [self presentViewController:newVC animated:YES completion:nil];
         }break;
         case 8:{
+            SFSafariViewController *safari;
+            if (@available(iOS 11.0,*)) {
+                SFSafariViewControllerConfiguration *config = [[SFSafariViewControllerConfiguration alloc] init];
+                config.entersReaderIfAvailable = YES;
+                config.barCollapsingEnabled = YES;
+                safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.baidu.com"] configuration:config];
+            }else if (@available(iOS 9.0,*)){
+                safari = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.baidu.com"] entersReaderIfAvailable:YES];
+            }
+            if (safari) {
+                [self presentViewController:safari animated:YES completion:nil];
+            }else{
+                DLog(@"Not Supported")
+            }
             
         }break;
         case 9:{

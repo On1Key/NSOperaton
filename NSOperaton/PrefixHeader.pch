@@ -20,6 +20,7 @@
 #import "FMDB.h"
 //#import "Aspects.h"
 #import "VIAnalyticsAOP.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 //#import "MJExtension.h"
 //#import "TTTAttributedLabel.h"
 //#import "CEBaseInteractionController.h"

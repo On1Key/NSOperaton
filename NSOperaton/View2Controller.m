@@ -9,8 +9,9 @@
 #import "View2Controller.h"
 #import <Social/Social.h>
 #import "CusActivity.h"
+#import <objc/runtime.h>
 
-@interface View2Controller ()<UITableViewDelegate,UITableViewDataSource,UIDocumentInteractionControllerDelegate>
+@interface View2Controller ()<UITableViewDelegate,UITableViewDataSource,UIDocumentInteractionControllerDelegate,UIWebViewDelegate>
 /**<#statements#>*/
 @property (nonatomic, strong) UITableView * tableview;
 /**<#statements#>*/
@@ -18,6 +19,14 @@
 @property (nonatomic,strong) UIDocumentInteractionController *documentInteractionController;
 /**<#statements#>*/
 @property (nonatomic, strong) UITextField * textfield;
+
+///MARK --Dynamic
+@property (nonatomic,strong) UIDynamicAnimator *animator;
+@property (strong, nonatomic) UISegmentedControl *segmented;
+@property (strong, nonatomic) UIView *blueView;
+@property (strong, nonatomic) UIView *redView;
+@property (strong, nonatomic) UIView *orangeView;
+
 @end
 
 @implementation View2Controller
@@ -28,33 +37,251 @@
     }
     return _dataArray;
 }
+- (UIDynamicAnimator *)animator{
+    if (_animator == nil) {
+        _animator = [[UIDynamicAnimator alloc]init];
+    }
+    return _animator;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    [self addTableView];
-    
-    UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 35)];
-    UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 35)];
-    textfield.placeholder = @"占位文本";
-    [titleView addSubview:textfield];
-    self.navigationItem.titleView = titleView;
-    self.view.backgroundColor = [UIColor whiteColor];
-    _textfield = textfield;
-    
-//    [self canResignFirstResponder]
-    
-//    BOOL can = [textfield canBecomeFirstResponder];
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        BOOL bec =[textfield becomeFirstResponder];
-//    });
-//    [textfield performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:1];
-    
-//    NSLog(@"===========================%d==%d",can,bec);
+    switch (self.controllerType) {
+        case ControllerTypeDynamic:{
+            ///MARK - Dynamic
+            [self resetDynamicView];
+            
+        }break;
+        case ControllerTypeReactiveCocoa:{
+            [self setUpReactiveCocoaTest];
+        }break;
+        case ControllerTypeWebviewToOc:{
+            [self webViewToOcAction];
+        }break;
+        default:{
+            
+            
+            [self addTableView];
+            
+            UIView *titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 35)];
+            UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 200, 35)];
+            textfield.placeholder = @"占位文本";
+            [titleView addSubview:textfield];
+            self.navigationItem.titleView = titleView;
+            self.view.backgroundColor = [UIColor whiteColor];
+            _textfield = textfield;
+            
+            //    [self canResignFirstResponder]
+            
+            //    BOOL can = [textfield canBecomeFirstResponder];
+            //    dispatch_async(dispatch_get_main_queue(), ^{
+            //        BOOL bec =[textfield becomeFirstResponder];
+            //    });
+            //    [textfield performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:1];
+            
+            //    NSLog(@"===========================%d==%d",can,bec);
+        }break;
+    }
     
 }
+#pragma mark - Dynamic
+- (void)resetDynamicView{
+    
+    _segmented = [[UISegmentedControl alloc] initWithItems:@[@"Dynamic1",@"Dynamic2"]];
+    [self.view addSubview:_segmented];
+    
+    _blueView = [[UIView alloc] init];
+    _blueView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:_blueView];
+    
+    _orangeView = [[UIView alloc] init];
+    _orangeView.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:_orangeView];
+    
+    _redView = [[UIView alloc] init];
+    _redView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:_redView];
+    
+    
+    _segmented.translatesAutoresizingMaskIntoConstraints = NO;
+    _blueView.translatesAutoresizingMaskIntoConstraints = NO;
+    _orangeView.translatesAutoresizingMaskIntoConstraints = NO;
+    _redView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-space-[_segmented]-space-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{@"space":@20} views:NSDictionaryOfVariableBindings(_segmented,_blueView,_orangeView,_redView)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[_segmented(40)]-20-[_blueView(100)]-[_orangeView(200)]" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{} views:NSDictionaryOfVariableBindings(_segmented,_blueView,_orangeView,_redView)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[_blueView(100)]-[_orangeView(200)]-20-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{} views:NSDictionaryOfVariableBindings(_segmented,_blueView,_orangeView,_redView)]];
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_orangeView(==_blueView)]" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{} views:NSDictionaryOfVariableBindings(_segmented,_blueView,_orangeView,_redView)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-20-[_redView]-20-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{} views:NSDictionaryOfVariableBindings(_segmented,_blueView,_orangeView,_redView)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_redView(40)]-20-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{} views:NSDictionaryOfVariableBindings(_segmented,_blueView,_orangeView,_redView)]];
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (self.controllerType == ControllerTypeDynamic) {
+        
+        //创建重力行为
+        UIGravityBehavior *gravityBehavior = [[UIGravityBehavior alloc]init];
+        [gravityBehavior addItem:self.blueView];
+        [gravityBehavior addItem:self.orangeView];
+        //加速度
+        gravityBehavior.magnitude = 3;
+        //创建碰撞行为
+        UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc]init];
+        //碰撞类型为元素和边界
+        collisionBehavior.collisionMode = UICollisionBehaviorModeEverything;
+        
+        CGFloat Y = self.view.frame.size.height - CGRectGetHeight(self.redView.frame);
+        CGFloat X = self.view.frame.size.width;
+        CGFloat height = self.view.frame.size.height;
+        
+        //设置红色的View为底边界,左边框跟右边框作为边界
+        [collisionBehavior addBoundaryWithIdentifier:@"collision1" fromPoint:CGPointMake(0,Y) toPoint:CGPointMake(X, Y)];
+        [collisionBehavior addBoundaryWithIdentifier:@"collision2" fromPoint:CGPointMake(0, 0) toPoint:CGPointMake(0, height)];
+        [collisionBehavior addBoundaryWithIdentifier:@"collision3" fromPoint:CGPointMake(X,0) toPoint:CGPointMake(X, height)];
+        
+        [collisionBehavior addItem:self.blueView];
+        [collisionBehavior addItem:self.segmented];
+        [collisionBehavior addItem:self.orangeView];
+        [self.animator addBehavior:collisionBehavior];
+        [self.animator addBehavior:gravityBehavior];
+    }
+}
+#pragma mark - ReactiveCocoa
+//https://www.jianshu.com/p/e096d2dda478
+- (void)setUpReactiveCocoaTest{
+    //--------action signal
+    UIButton *btn = [[UIButton alloc] init];
+    [btn setTitle:@"Touch Me" forState:UIControlStateNormal];
+    btn.backgroundColor = COLOR_RANDOM;
+    [self.view addSubview:btn];
+    
+    btn.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary *views = @{@"Btn":btn};//NSDictionaryOfVariableBindings(btn);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-100-[Btn]-100-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{} views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-100-[Btn(44)]" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{} views:views]];
+    
+    btn.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(UIButton *input) {
+        NSLog(@"点击了我:%@",input.currentTitle);
+        //返回一个空的信号量
+        return [RACSignal empty];
+    }];
+    [[btn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+       DLog(@"%@",x)
+    }];
+    
+    //--------text signal
+    UITextField *textfield = [[UITextField alloc] init];
+    textfield.backgroundColor = COLOR_RANDOM;
+    textfield.placeholder = @"enter";
+    [self.view addSubview:textfield];
+    
+    textfield.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-100-[textfield]-100-|" options:NSLayoutFormatDirectionLeadingToTrailing metrics:@{} views:NSDictionaryOfVariableBindings(textfield)]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-200-[textfield(44)]" options:NSLayoutFormatDirectionLeadingToTrailing metrics:nil views:NSDictionaryOfVariableBindings(textfield)]];
+    
+    [textfield.rac_textSignal subscribeNext:^(id x) {
+        DLog(@"%@",x)
+    }];
+    [textfield.rac_textSignal filter:^BOOL(NSString *value) {
+        return value.length > 3;
+    }];
+    
+    //--------RACSequence获取signal
+    RACSignal *signal = [@"A B C D E F G H I" componentsSeparatedByString:@" "].rac_sequence.signal;
+    // Outputs
+    [signal subscribeNext:^(NSString *x) {
+        NSLog(@"%@", x);
+    }];
+    
+    
+//    NSString *reactiveString = @"reactivestring";
+//    [[RACObserve(self, reactiveString) filter:^BOOL(id value) {
+//        return [value containsString:@"D"];
+//    }] subscribeNext:^(id x) {
+//        DLog(@"%@",x)
+//    }];
+//    UIView animateWithDuration:<#(NSTimeInterval)#> delay:<#(NSTimeInterval)#> options:<#(UIViewAnimationOptions)#> animations:<#^(void)animations#> completion:<#^(BOOL finished)completion#>
+//    [UIView animateWithDuration:2 animations:^{
+//       DLog(@"animation--------------------ing")
+//    } completion:^(BOOL finished) {
+//        DLog(@"animation--------------------end")
+//    }];
+}
+#pragma mark - webviewToOc
+- (void)webViewToOcAction{
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    webView.delegate = self;
+    [self.view addSubview:webView];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"index.html" ofType:nil];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+}
+// 保存网页传递过来的参数
+static NSDictionary *htmlParmas = nil;
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSString *str = request.URL.absoluteString;
+    str =[str stringByRemovingPercentEncoding];
+    NSRange range = [str rangeOfString:@"firstclick://"];
+    //yhdx://sellerindex#userid=123
+    DLog(@"===========%ld",range.location)
+    if (range.location != NSNotFound) {
+        // 获取方法名
+        NSString *resultStr = [str substringFromIndex:range.location + range.length];
+        //将#分隔的字符串转换成数组
+        NSArray *propertyArray = [resultStr componentsSeparatedByString:@"#"];
+        
+        if (propertyArray.count != 0) {
+            //参数
+            if (propertyArray.count>1) {
+                
+                NSString *paramsStr = propertyArray[1];
+                NSArray *paramsArr = [paramsStr componentsSeparatedByString:@"&"];
+                
+                if (paramsArr.count != 0) {
+                    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                    
+                    for (int i = 0; i < paramsArr.count; i ++) {
+                        
+                        NSString *propertyStr = paramsArr[i];
+                        
+                        NSArray *proInfos = [propertyStr componentsSeparatedByString:@"="];
+                        if (proInfos.count >= 2) {
+                            NSString *proName = proInfos[0];
+                            NSString *proValue = proInfos[1];
+                            [params setObject:proValue forKey:proName];
+                        }
+                    }
+                    htmlParmas = params;
+                }
+            }
+            
+            // 生成方法名
+            NSString *method = propertyArray[0];
+            SEL sel = NSSelectorFromString(method);
+            // 判断方法是否存在  &&  执行方法
+            //            if (self.authorWebViewDelegate && [self.authorWebViewDelegate respondsToSelector:@selector(authorWebView:didPerformHttpSelector:params:)] && [self.authorWebViewDelegate respondsToSelector:sel]) {
+            //                [self.authorWebViewDelegate authorWebView:self didPerformHttpSelector:sel params:htmlParmas];
+            //            }
+            
+            if ([self respondsToSelector:sel]) {
+                [self performSelector:sel withObject:nil afterDelay:0];
+            }
+            
+        }
+    }
+    
+    return YES;
+}
+- (void)shareClick{
+    NSString *content = [NSString stringWithFormat:@"%@",htmlParmas];
+    content = [content stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    DLog("点了了share，参数是：%@",content);
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"传参如下:" message:content preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//    [alert addAction:action];
+//    [self presentViewController:alert animated:YES completion:nil];
+}
+#pragma mark - file
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [_textfield  becomeFirstResponder];
@@ -179,23 +406,6 @@
             if (activity) {
                 [self presentViewController:activity animated:TRUE completion:nil];
             }
-            
-            //    if ([[UIDevice currentDevice].model isEqualToString:@"iPhone"]) {
-            //        [self presentViewController:activity animated:YES completion:nil];
-            //    }
-            //    else if([[UIDevice currentDevice].model isEqualToString:@"iPad"])
-            //    {
-            //        UIPopoverPresentationController *popover = activity.popoverPresentationController;
-            //        if (popover) {
-            //            popover.sourceView = self.sys2;
-            //            popover.permittedArrowDirections = UIPopoverArrowDirectionUp;
-            //        }
-            //        [self presentViewController:activity animated:YES completion:nil];
-            //    }
-            //    else
-            //    {
-            //        //do nothing
-            //    }
             
         }break;
         case 2:{
@@ -418,4 +628,12 @@
 }
 
 
+@end
+@implementation View2Controller(type)
+-(ControllerType)controllerType{
+    return [objc_getAssociatedObject(self, _cmd) integerValue];
+}
+- (void)setControllerType:(ControllerType)controllerType{
+    objc_setAssociatedObject(self, @selector(controllerType), @(controllerType), OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
 @end

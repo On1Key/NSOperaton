@@ -22,7 +22,7 @@
 #import "DBTableController.h"
 
 #import <SafariServices/SafariServices.h>
-
+#import "CollectionController.h"
 
 #define reuse @"mainCellReuseId"
 
@@ -43,7 +43,11 @@
                         @"6、FMDB",
                         @"7、TLCityPickerController",
                         @"8、Animation Controller",
-                        @"9、Safari"];
+                        @"9、Safari",
+                        @"10、Dynamic",
+                        @"11、ReactiveCocoa",
+                        @"12、Collection",
+                        @"13、webviewToOc"];
     }
     return _dataSource;
 }
@@ -163,16 +167,23 @@
             
         }break;
         case 9:{
-            
+            View2Controller *vc = [View2Controller new];
+            vc.controllerType = ControllerTypeDynamic;
+            [self.navigationController pushViewController:vc animated:YES];
         }break;
         case 10:{
-            
+            View2Controller *vc = [View2Controller new];
+            vc.controllerType = ControllerTypeReactiveCocoa;
+            [self.navigationController pushViewController:vc animated:YES];
         }break;
         case 11:{
-            
+            CollectionController *collect = [[CollectionController alloc] init];
+            [self.navigationController pushViewController:collect animated:YES];
         }break;
         case 12:{
-            
+            View2Controller *vc = [View2Controller new];
+            vc.controllerType = ControllerTypeWebviewToOc;
+            [self.navigationController pushViewController:vc animated:YES];
         }break;
         case 13:{
             

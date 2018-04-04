@@ -12,6 +12,9 @@
 		C525177320246FB000653F35 /* DBTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = C525177220246FB000653F35 /* DBTableController.m */; };
 		C5251776202471B200653F35 /* DBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C5251775202471B200653F35 /* DBModel.m */; };
 		C5251779202472AC00653F35 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C5251778202472AC00653F35 /* DBManager.m */; };
+		C52980832051345200A27A78 /* CollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52980822051345200A27A78 /* CollectionController.m */; };
+		C52980862051348B00A27A78 /* CustomeCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C52980852051348B00A27A78 /* CustomeCollectionLayout.m */; };
+		C5298089205138CE00A27A78 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C5298088205138CE00A27A78 /* CollectionViewCell.m */; };
 		C52AD6491EA8C84A0017AA01 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AD6481EA8C84A0017AA01 /* main.m */; };
 		C52AD64C1EA8C84A0017AA01 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AD64B1EA8C84A0017AA01 /* AppDelegate.m */; };
 		C52AD64F1EA8C84A0017AA01 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C52AD64E1EA8C84A0017AA01 /* ViewController.m */; };
@@ -37,6 +40,9 @@
 		C57595371F049AD10039B7D9 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C57595351F049AD10039B7D9 /* TableViewCell.xib */; };
 		C575953A1F04A3610039B7D9 /* CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C57595391F04A3610039B7D9 /* CellModel.m */; };
 		C579BF7B1FEA49DD00EAA7AA /* YYTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C579BF7A1FEA49DD00EAA7AA /* YYTextField.m */; };
+		C580E0A2205CF6D000C2A20B /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = C580E0A1205CF6D000C2A20B /* index.html */; };
+		C580E0A5205D193B00C2A20B /* vip_spec_n.png in Resources */ = {isa = PBXBuildFile; fileRef = C580E0A3205D193A00C2A20B /* vip_spec_n.png */; };
+		C580E0A6205D193B00C2A20B /* vip_spec_s.png in Resources */ = {isa = PBXBuildFile; fileRef = C580E0A4205D193A00C2A20B /* vip_spec_s.png */; };
 		C586FDA91F3C0C34004CC92F /* NSOperatonTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C586FDA81F3C0C34004CC92F /* NSOperatonTests.m */; };
 		C5E37A6A2025A20A0007EFA6 /* jkdb.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = C5E37A682025A2090007EFA6 /* jkdb.sqlite */; };
 		C5E37A6B2025A20A0007EFA6 /* Cache.db in Resources */ = {isa = PBXBuildFile; fileRef = C5E37A692025A2090007EFA6 /* Cache.db */; };
@@ -87,6 +93,12 @@
 		C5251775202471B200653F35 /* DBModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBModel.m; sourceTree = "<group>"; };
 		C5251777202472AC00653F35 /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		C5251778202472AC00653F35 /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		C52980812051345200A27A78 /* CollectionController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionController.h; sourceTree = "<group>"; };
+		C52980822051345200A27A78 /* CollectionController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionController.m; sourceTree = "<group>"; };
+		C52980842051348B00A27A78 /* CustomeCollectionLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomeCollectionLayout.h; sourceTree = "<group>"; };
+		C52980852051348B00A27A78 /* CustomeCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomeCollectionLayout.m; sourceTree = "<group>"; };
+		C5298087205138CE00A27A78 /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		C5298088205138CE00A27A78 /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		C52AD6441EA8C84A0017AA01 /* NSOperaton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSOperaton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C52AD6481EA8C84A0017AA01 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C52AD64A1EA8C84A0017AA01 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -125,6 +137,9 @@
 		C57595391F04A3610039B7D9 /* CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellModel.m; sourceTree = "<group>"; };
 		C579BF791FEA49DC00EAA7AA /* YYTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYTextField.h; sourceTree = "<group>"; };
 		C579BF7A1FEA49DD00EAA7AA /* YYTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYTextField.m; sourceTree = "<group>"; };
+		C580E0A1205CF6D000C2A20B /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		C580E0A3205D193A00C2A20B /* vip_spec_n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vip_spec_n.png; sourceTree = "<group>"; };
+		C580E0A4205D193A00C2A20B /* vip_spec_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vip_spec_s.png; sourceTree = "<group>"; };
 		C586FDA61F3C0C34004CC92F /* NSOperatonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSOperatonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C586FDA81F3C0C34004CC92F /* NSOperatonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSOperatonTests.m; sourceTree = "<group>"; };
 		C586FDAA1F3C0C34004CC92F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -245,6 +260,19 @@
 			name = fmdb;
 			sourceTree = "<group>";
 		};
+		C52980802051342700A27A78 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				C52980812051345200A27A78 /* CollectionController.h */,
+				C52980822051345200A27A78 /* CollectionController.m */,
+				C5298087205138CE00A27A78 /* CollectionViewCell.h */,
+				C5298088205138CE00A27A78 /* CollectionViewCell.m */,
+				C52980842051348B00A27A78 /* CustomeCollectionLayout.h */,
+				C52980852051348B00A27A78 /* CustomeCollectionLayout.m */,
+			);
+			name = Collection;
+			sourceTree = "<group>";
+		};
 		C52AD63B1EA8C84A0017AA01 = {
 			isa = PBXGroup;
 			children = (
@@ -310,11 +338,15 @@
 				C5EC8E3A1F39AC77003BA9CA /* file */,
 				C5F9C0E21F1EFD27003FF376 /* View2Controller.h */,
 				C5F9C0E31F1EFD27003FF376 /* View2Controller.m */,
+				C580E0A1205CF6D000C2A20B /* index.html */,
+				C580E0A3205D193A00C2A20B /* vip_spec_n.png */,
+				C580E0A4205D193A00C2A20B /* vip_spec_s.png */,
 				C56704EA2015CDDB0070DCC1 /* TabBarController.h */,
 				C56704EB2015CDDB0070DCC1 /* TabBarController.m */,
 				C525176E20246F7B00653F35 /* fmdb */,
 				C5F0A3481F0F2BD60016D5E3 /* BaseViewController.h */,
 				C5F0A3491F0F2BD60016D5E3 /* BaseViewController.m */,
+				C52980802051342700A27A78 /* Collection */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -518,6 +550,7 @@
 			files = (
 				C5E37A6A2025A20A0007EFA6 /* jkdb.sqlite in Resources */,
 				C5673C721F3ABBC30017EA85 /* NSOperatonDemo.mov in Resources */,
+				C580E0A2205CF6D000C2A20B /* index.html in Resources */,
 				C5EC8E361F39A83A003BA9CA /* num_excel.xlsx in Resources */,
 				C52AD6571EA8C84A0017AA01 /* LaunchScreen.storyboard in Resources */,
 				C5F2BD331F46BFAD00592A50 /* movie.MOV in Resources */,
@@ -530,10 +563,12 @@
 				C57595371F049AD10039B7D9 /* TableViewCell.xib in Resources */,
 				C52AD6541EA8C84A0017AA01 /* Assets.xcassets in Resources */,
 				C5EC8E341F39A52F003BA9CA /* num_numbers.numbers in Resources */,
+				C580E0A5205D193B00C2A20B /* vip_spec_n.png in Resources */,
 				C5E37A6B2025A20A0007EFA6 /* Cache.db in Resources */,
 				C575952E1F0374050039B7D9 /* 4.png in Resources */,
 				C5673C741F3AC10B0017EA85 /* NSOperatonDemo.gif in Resources */,
 				C575952D1F0374050039B7D9 /* 3.jpg in Resources */,
+				C580E0A6205D193B00C2A20B /* vip_spec_s.png in Resources */,
 				C5F9C08B1F1323EA003FF376 /* InfoPlist.strings in Resources */,
 				C52AD6521EA8C84A0017AA01 /* Main.storyboard in Resources */,
 				C5EC8E4B1F3AB385003BA9CA /* list.pdf in Resources */,
@@ -564,6 +599,7 @@
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/TLCityPicker/TLCityPicker.framework",
@@ -579,6 +615,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TLCityPicker.framework",
@@ -638,6 +675,7 @@
 				C52AD64F1EA8C84A0017AA01 /* ViewController.m in Sources */,
 				C5F9C0E41F1EFD27003FF376 /* View2Controller.m in Sources */,
 				C5251776202471B200653F35 /* DBModel.m in Sources */,
+				C52980862051348B00A27A78 /* CustomeCollectionLayout.m in Sources */,
 				C5251779202472AC00653F35 /* DBManager.m in Sources */,
 				C5F161EB1ED8348A00A130E5 /* UIButton+touch.m in Sources */,
 				C5F9C0A91F1624A2003FF376 /* NSString+scan.m in Sources */,
@@ -648,6 +686,7 @@
 				C56704EC2015CDDB0070DCC1 /* TabBarController.m in Sources */,
 				C52AD6491EA8C84A0017AA01 /* main.m in Sources */,
 				C5F4EABE1EC5A70B001FED90 /* NSMutableArray+safe.m in Sources */,
+				C52980832051345200A27A78 /* CollectionController.m in Sources */,
 				C5F9C0A01F15C818003FF376 /* UILabel+LinkUrl.m in Sources */,
 				C5F161DA1ED5373300A130E5 /* TableViewController.m in Sources */,
 				C5EC8E391F39AAE6003BA9CA /* FileTableViewController.m in Sources */,
@@ -659,6 +698,7 @@
 				C5EE23B51F29BAAF0073A89D /* JsonSubModel.m in Sources */,
 				C5EE23A71F25F4560073A89D /* AnalysisManager.m in Sources */,
 				C5EC8E471F3AAD3E003BA9CA /* PDFView.m in Sources */,
+				C5298089205138CE00A27A78 /* CollectionViewCell.m in Sources */,
 				C57595361F049AD10039B7D9 /* TableViewCell.m in Sources */,
 				C5F2BD361F46C53F00592A50 /* CusActivity.m in Sources */,
 				C5F161EA1ED8348A00A130E5 /* UIButton+Delay.m in Sources */,

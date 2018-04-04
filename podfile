@@ -17,5 +17,6 @@ pod 'AvoidCrash', '~> 1.6.7'
 pod 'FDStackView', '~> 1.0'
 pod 'TLCityPicker', '~> 1.0.0'
 pod 'FMDB', '~> 2.6.2'
+pod 'ReactiveCocoa', '~> 2.5.0'
 
 end

@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+            <style>
+                #item{
+                    width: 100%;
+                    height: 100%;
+                }
+            .item img{
+                width: 100%;
+            }
+            
+            .spec{
+                display: flex;
+                justify-content: space-around;
+                margin: 10px;
+                align-content: center;
+                height: 60px;
+                border-style: solid;
+                border-width: 1px;
+                line-height: 60px;
+                border-color: black;
+            }
+            .title{
+                margin: 0px 0px 0px 10px;
+                height: 100%;
+                width: 70%;
+            }
+            .price_title{
+                text-align: right;
+                color: purple;
+                height: 100%;
+                font-size: 12px;
+            }
+            .price{
+                text-align: right;
+                width: 30%;
+                margin: 0px 5px 0px 0px;
+                color: purple;
+                height: 100%;
+                font-size: 16px;
+            }
+            .btn{
+                width: 25px;
+                height:25px;
+                vertical-align: middle;
+                /*background-size: 100%;*/
+                /*background: url(vip_spec_n.png) center no-repeat;*/
+            }
+            </style>
+            </head>
+    <body>
+        
+        <div id="items">
+            <p class="item"><img src="https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=92823688,1588893304&fm=85&s=E503F21F104556F90A21CACC03001025" alt="loading..."/></p>
+            <p class="item"><img class="item_img" src="https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=92823688,1588893304&fm=85&s=E503F21F104556F90A21CACC03001025" alt="loading..."/></p>
+            <p class="item"><img class="item_img" src="https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=92823688,1588893304&fm=85&s=E503F21F104556F90A21CACC03001025" alt="loading..."/></p>
+            <p class="item"><img class="item_img" src="https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=92823688,1588893304&fm=85&s=E503F21F104556F90A21CACC03001025" alt="loading..."/></p>
+            <p class="item"><img class="item_img" src="https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=92823688,1588893304&fm=85&s=E503F21F104556F90A21CACC03001025" alt="loading..."/></p>
+            <p class="item"><img class="item_img" src="https://ss0.baidu.com/73x1bjeh1BF3odCf/it/u=92823688,1588893304&fm=85&s=E503F21F104556F90A21CACC03001025" alt="loading..."/></p>
+        </div>
+        
+        <div id="specs">
+            <div class="spec" onclick="changeVipSelectAcion(this)" style="border: 1px purple solid;">
+                <div class="title">2年VIP会员+50元优惠券包</div>
+                <div class="price">
+                    <label class="price_title">￥</label>
+                    <label class="price">499.00</label>
+                    <img class="btn" id="btn1" src="vip_spec_s.png"/>
+                </div>
+            </div>
+            <div class="spec" onclick="changeVipSelectAcion(this)" >
+                <div class="title">2年VIP会员+豆浆包礼盒</div>
+                <div class="price">
+                    <label class="price_title">￥</label>
+                    <label class="price">499.00</label>
+                    <img class="btn" id="btn2" src="vip_spec_n.png"/>
+                </div>
+            </div>
+            <div class="spec" onclick="changeVipSelectAcion(this)" >
+                <div class="title">2年VIP会员</div>
+                <div class="price">
+                    <label class="price_title">￥</label>
+                    <label class="price">499.00</label>
+                    <img class="btn" id="btn3" src="vip_spec_n.png"/>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            function loadURL(url) {
+                var iFrame;
+                iFrame = document.createElement("iframe");
+                iFrame.setAttribute("src", url);
+                iFrame.setAttribute("style", "display:none;");
+                iFrame.setAttribute("height", "0px");
+                iFrame.setAttribute("width", "0px");
+                iFrame.setAttribute("frameborder", "0");
+                document.body.appendChild(iFrame);
+                // 发起请求后这个 iFrame 就没用了，所以把它从 dom 上移除掉
+                iFrame.parentNode.removeChild(iFrame);
+                iFrame = null;
+            }
+        function changeVipSelectAcion(curInput) {
+            var useInputs = curInput.getElementsByClassName('btn');
+            var useInput = useInputs[0];
+            
+            if (useInput.checked == 'checked'){
+                return;
+            }
+            
+            loadURL("firstClick://shareClick#title=分享的标题&content=分享的内容&url=链接地址&imagePath=图片地址")
+            
+            if(useInput.className = 'btn'){
+                var allInputs = document.getElementsByClassName('btn');
+                var allItemDivs = document.getElementsByClassName('spec')
+                for (var i = 0;i < allInputs.length;i++){
+                    var oneInput = allInputs[i];
+                    var oneItemDiv = allItemDivs[i];
+                    if (oneInput.id == useInput.id){
+                        //                            oneInput.checked = 'checked'
+                        //                            oneInput.style.setProperty("background","url(vip_spec_s.png) center no-repeat")
+                        oneInput.setAttribute("src","vip_spec_s.png")
+                        oneItemDiv.style.setProperty("border","1px purple solid")
+                    }else {
+                        //                            oneInput.checked = ''
+                        //                            oneInput.style.setProperty("background","url(vip_spec_n.png) center no-repeat")
+                        oneInput.setAttribute("src","vip_spec_n.png")
+                        oneItemDiv.style.setProperty("border","1px black solid")
+                    }
+                }
+            }
+        }
+        </script>
+        
+    </body>
+</html>
+
